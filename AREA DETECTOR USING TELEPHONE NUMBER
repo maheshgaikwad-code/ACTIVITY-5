@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define MAX_ENTRIES 100
+
+typedef struct {
+    char phoneNumber[11];
+    char location[50];
+} DirectoryEntry;
+
+int isValidPhoneNumber(char *phoneNumber) {
+    for (int i = 0; phoneNumber[i] != '\0'; i++) {
+        if (!isdigit(phoneNumber[i])) {
+            return 0;
+        }
+    }
+    return 1; 
+}
+void searchPhoneNumber(DirectoryEntry directory[], int count, char *phoneNumber) {
+    int found = 0;
+    for (int i = 0; i <count; i++) {
+        if (strcmp(directory[i].phoneNumber, phoneNumber) == 0) {
+            printf("Location/Area: %s\n", directory[i].location);
+            found = 1;
+            break;
+        }
+    }
+    if (!found) {
+        printf("The phone number %s is not in the directory.\n", phoneNumber);
+    }
+}
+
+int main() {
+    DirectoryEntry directory[MAX_ENTRIES];
+    int count = 0;
+    char phoneNumber[11];
+
+    strcpy(directory[count].phoneNumber, "9503638872");
+    strcpy(directory[count].location, "Sr.No 18, Plot No.5/3, CTS No.205, Vadar Vasti Rd., behind Vandevi Temple, Karvenagar, Pune");
+    count++;
+     strcpy(directory[count].phoneNumber, "9096980486");
+    strcpy(directory[count].location, "Plot No.5,Narhe, Pune");
+    count++;
+     strcpy(directory[count].phoneNumber, "9881709069");
+    strcpy(directory[count].location, "Y.C Chowk,Mauli Nagar,Ambajogai");
+    count++;
+     strcpy(directory[count].phoneNumber, "9356384427");
+    strcpy(directory[count].location, "Y.C Chowk,Mauli Nagar,Ambajogai");
+    count++;
+     strcpy(directory[count].phoneNumber, "8503638872");
+    strcpy(directory[count].location, "Near Choube House, Indra Nagar, Kolkata,West Bengal");
+    count++;
+     strcpy(directory[count].phoneNumber, "7509876542");
+    strcpy(directory[count].location, "Hostel No. 6, Old Rajiv Gandhi Nagar,Kota,Rajasthan");
+    count++;
+     strcpy(directory[count].phoneNumber, "9556638872");
+    strcpy(directory[count].location, "Indra Vihar, House No 26 A, Jaipur, Rajasthan");
+    count++;
+     strcpy(directory[count].phoneNumber, "9503608872");
+    strcpy(directory[count].location, "Bhilarewadi, House No.1, Katraj, Pune");
+    count++;
+     strcpy(directory[count].phoneNumber, "9508738872");
+    strcpy(directory[count].location, "Sadashiv Peth, House No.7, Pune");
+    count++;
+     strcpy(directory[count].phoneNumber, "9507938872");
+    strcpy(directory[count].location, "Magarpatta City, Hadapsar, Pune");
+    count++;
+     strcpy(directory[count].phoneNumber, "9507638872");
+    strcpy(directory[count].location, "Prashant Nagar, Behind Bus Stand, Ambajogai");
+    count++;
+     strcpy(directory[count].phoneNumber, "9500638872");
+    strcpy(directory[count].location, "Dada Bari, Hosue No. 6, Kota, Rajasthan");
+    count++;
+     strcpy(directory[count].phoneNumber, "9503538872");
+    strcpy(directory[count].location, "Industrial Area, Near Resonance, Kota, Rajasthan");
+    count++;
+     strcpy(directory[count].phoneNumber, "9503688872");
+    strcpy(directory[count].location, "House No. 36, Nayapura, Kota , Rajasthan");
+    count++;
+     strcpy(directory[count].phoneNumber, "7498453499");
+    strcpy(directory[count].location, "House No. 5, Keshavpura, Chandrapur, Maharashtra");
+    count++;
+     strcpy(directory[count].phoneNumber, "7709222770");
+    strcpy(directory[count].location, "Aerodum Area, Kota, Rajasthan");
+    count++;
+    
+    strcpy(directory[count].phoneNumber, "7720902349");
+    strcpy(directory[count].location, " House No.15,Landmark City, Kota, Rajasthan");
+    count++;
+
+    printf("Enter the phone number to search: ");
+    scanf("%s", phoneNumber);
+
+    if (!isValidPhoneNumber(phoneNumber)) {
+        printf("Error: Invalid phone number. Please enter a valid phone number.\n");
+    } else {
+        
+        searchPhoneNumber(directory, count, phoneNumber);
+    }
+
+    return 0;
+}
