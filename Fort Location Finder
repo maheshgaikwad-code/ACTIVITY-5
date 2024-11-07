@@ -1,0 +1,135 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define MAX_ENTRIES 100
+
+typedef struct {
+    char fortName[50];
+    char location[50];
+    char distance[50];
+    char openingtime[50];
+    char closingtime[50];
+} DirectoryEntry;
+
+void searchFortLocation(DirectoryEntry directory[], int count, char *fortName) {
+    int found = 0;
+    for (int i = 0; i < count; i++) {
+        if (strcasecmp(directory[i].fortName, fortName) == 0) {
+            printf("Location: %s\n", directory[i].location);
+            printf("Distance: %s\n", directory[i].distance);
+            printf("Opening Time: %s\n", directory[i].openingtime);
+            printf("Closing Time: %s\n", directory[i].closingtime);
+            found = 1;
+            break;
+        }
+    }
+    if (!found) {
+        printf("The fort '%s' is not in the directory.\n", fortName);
+    }
+}
+
+int main() {
+    DirectoryEntry directory[MAX_ENTRIES];
+    int count = 0;
+    char fortName[50];
+
+    strcpy(directory[count].fortName, "Rajmachi Fort");
+    strcpy(directory[count].location, "Lonavala, Maharastra");
+    strcpy(directory[count].distance, "170.8km from Pune");
+    strcpy(directory[count].openingtime, "9:00 AM");
+    strcpy(directory[count].closingtime, "6:00 PM");
+    count++;
+    
+    strcpy(directory[count].fortName, "Lohagad");
+    strcpy(directory[count].location, "Lonavala, Maharastra");
+    strcpy(directory[count].distance, "68.1km from Pune");
+    strcpy(directory[count].openingtime, "9:00 AM");
+    strcpy(directory[count].closingtime, "6:00 PM");
+    count++;
+    
+    strcpy(directory[count].fortName, "Sinhgad");
+    strcpy(directory[count].location, "Pune, Maharastra");
+    strcpy(directory[count].distance, "12.5km from Pune");
+    strcpy(directory[count].openingtime, "5:00 AM");
+    strcpy(directory[count].closingtime, "6:00 PM");
+    count++;
+    
+    strcpy(directory[count].fortName, "Shivneri Fort");
+    strcpy(directory[count].location, "Kusur, Junnar, Maharashtra");
+    strcpy(directory[count].distance, "97.7km from Pune");
+    strcpy(directory[count].openingtime, "7:00 AM");
+    strcpy(directory[count].closingtime, "6:00 PM");
+    count++;
+    
+    strcpy(directory[count].fortName, "Korigad");
+    strcpy(directory[count].location, "Aamby Valley City, Maharashtra");
+    strcpy(directory[count].distance, "91.7km from Pune");
+    strcpy(directory[count].openingtime, "Open 24 Hours");
+    strcpy(directory[count].closingtime, " ");
+    count++;
+    
+    strcpy(directory[count].fortName, "Malhargad");
+    strcpy(directory[count].location, "Kalewadi, Maharashtra");
+    strcpy(directory[count].distance, "30.4km from Pune");
+    strcpy(directory[count].openingtime, "Open 24 Hours");
+    strcpy(directory[count].closingtime, " ");
+    count++;
+    
+    strcpy(directory[count].fortName, "Raigad");
+    strcpy(directory[count].location, "Raigad, Pune, Maharastra");
+    strcpy(directory[count].distance, "131.8km from Pune");
+    strcpy(directory[count].openingtime, "8:00 AM");
+    strcpy(directory[count].closingtime, "5:00 PM");
+    count++;
+    
+    strcpy(directory[count].fortName, "Harishchandragad");
+    strcpy(directory[count].location, "Malshej Ghat , Ahmednagar");
+    strcpy(directory[count].distance, "163.8km from Pune");
+    strcpy(directory[count].openingtime, "5:00 AM");
+    strcpy(directory[count].closingtime, "6:00 PM");
+    count++;
+
+    strcpy(directory[count].fortName, "Shaniwar Vada");
+    strcpy(directory[count].location, "Pune District, Maharastra");
+    strcpy(directory[count].distance, "3.7km from Pune Railway Station");
+    strcpy(directory[count].openingtime, "9:00 AM");
+    strcpy(directory[count].closingtime, "5:30 PM");
+    count++;
+    
+    strcpy(directory[count].fortName, "Pratapgad");
+    strcpy(directory[count].location, "Pune District, Maharastra");
+    strcpy(directory[count].distance, "138.8km from Pune");
+    strcpy(directory[count].openingtime, "6:00 AM");
+    strcpy(directory[count].closingtime, "7:00 PM");
+    count++;
+    
+    strcpy(directory[count].fortName, "Torna Fort");
+    strcpy(directory[count].location, "Pune District, Maharastra");
+    strcpy(directory[count].distance, "54.6km from Pune");
+    strcpy(directory[count].openingtime, "9:00 AM");
+    strcpy(directory[count].closingtime, "6:00 PM");
+    count++;
+    
+    strcpy(directory[count].fortName, "Purandar Fort");
+    strcpy(directory[count].location, "Purandar Rd, Gherapurandhar, Maharashtra");
+    strcpy(directory[count].distance, "50km from Pune");
+    strcpy(directory[count].openingtime, "9:30 AM");
+    strcpy(directory[count].closingtime, "6:00 PM");
+    count++;
+    
+    strcpy(directory[count].fortName, "Tikona Fort");
+    strcpy(directory[count].location, "Tikonapeth tal, Mulshi, Maharashtra");
+    strcpy(directory[count].distance, "59km from Pune");
+    strcpy(directory[count].openingtime, "9:00 AM");
+    strcpy(directory[count].closingtime, "6:00 PM");
+    count++;
+    
+    printf("Enter the fort name to search: ");
+    fgets(fortName, sizeof(fortName), stdin);
+    fortName[strcspn(fortName, "\n")] = 0;
+
+    searchFortLocation(directory, count, fortName);
+
+    return 0;
+}
